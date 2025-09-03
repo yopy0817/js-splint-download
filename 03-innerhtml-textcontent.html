@@ -28,9 +28,21 @@
         // 1. innerHTML은 HTML 태그를 해석합니다
         // 2. textContent는 텍스트만 처리합니다
         // 3. "<strong>굵은 텍스트</strong>"를 각각에 적용해보세요
+		const innerHTMLBtn = document.getElementById('innerHTMLBtn');
+        const textContentBtn = document.getElementById('textContentBtn');
+        const result1 = document.getElementById('result1');
+        const result2 = document.getElementById('result2');
         
-        // 여기에 코드를 작성하세요
+        // 1. innerHTML은 HTML 태그를 해석합니다
+        innerHTMLBtn.addEventListener('click', function() {
+            result1.innerHTML = '<strong>굵은 텍스트</strong>';
+        });
         
+        // 2. textContent는 텍스트만 처리합니다
+        textContentBtn.addEventListener('click', function() {
+            result2.textContent = '<strong>굵은 텍스트</strong>';
+        });
+		
     </script>
 </body>
 </html>
