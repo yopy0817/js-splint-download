@@ -29,6 +29,21 @@
         
         // 여기에 코드를 작성하세요
         
+        let mouse = document.getElementById("mouseBox");
+        let result = document.getElementById("result")
+
+        mouse.addEventListener("mouseenter", function() {
+            result.textContent = "마우스가 박스 위로 올라왔습니다!"
+        });
+
+        mouse.addEventListener("mouseleave", function() {
+            result.textContent = "마우스가 박스를 벗어났습니다!"
+        });
+
+        mouse.addEventListener("click", function() {
+            result.textContent = "박스를 클릭했습니다!!"
+        });
+
     </script>
 </body>
 </html>
