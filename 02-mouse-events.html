@@ -21,12 +21,36 @@
     </div>
 
     <script>
+        /*  
+            desc : jkk
+            date : 20250903
+            체감난이도:★★☆☆☆  될듯 될듯 안됨. 
+            uncaught typeerror 때문에 미칠거같음
+            원인 : 오타;;;;; mouseBox.... mousebox.... 
+            결과 : id 고침 하..;
+        */
         // 힌트: 
         // 1. mouseenter - 마우스가 요소 위로 올라갈 때
         // 2. mouseleave - 마우스가 요소를 벗어날 때
         // 3. click - 마우스 클릭할 때
         // 4. textContent로 결과를 표시하세요
         
+        // 딱히 의미는 없는데 구분하러 변수 3개 생성
+        let mb1=document.getElementById("mouseBox");
+        let mb2=document.getElementById("mouseBox");
+        let mb3=document.getElementById("mouseBox");
+        let r=document.getElementById("result"); 
+
+        mb1.addEventListener("mouseenter",function(){
+            r.textContent="마우스진입";
+        });
+        mb2.addEventListener("mouseleave",function(){
+            r.textContent="마우스이탈";
+        });
+        mb3.addEventListener("click",function(){
+            r.textContent="마우스클릭";
+        });
+   
         // 여기에 코드를 작성하세요
         
     </script>

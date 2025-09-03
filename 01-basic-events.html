@@ -21,10 +21,21 @@
     </div>
 
     <script>
+        /* 
+         desc : jkk
+         date : 20250903
+         체감난이도:★☆☆☆☆ textContent 이벤트 알아야됨. 알면 별0개
+        */
         // 힌트: 
         // 1. getElementById로 버튼 요소를 가져오세요
         // 2. addEventListener로 'click' 이벤트를 추가하세요
         // 3. result div에 메시지를 표시하세요
+
+        let hi=document.getElementById("greetBtn"); 
+        let box=document.getElementById("result")
+        hi.addEventListener("click",function(){
+            box.textContent="ㅎㅇ";
+        });
         
         // 여기에 코드를 작성하세요
         

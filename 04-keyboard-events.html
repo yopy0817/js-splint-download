@@ -21,11 +21,38 @@
     </div>
 
     <script>
+        /* 
+        desc : jkk
+        date : 20250903
+        체감난이도:★☆☆☆☆ 
+        key press가 뭔가 좀 이상한데? - space / enter만 적용되는듯? 향후 쓸일없을거같으니 패스
+        */
+
         // 힌트: 
         // 1. keydown - 키를 누를 때
         // 2. keyup - 키를 놓을 때
         // 3. keypress - 문자 키를 누를 때
         // 4. event.key로 눌린 키를 확인하세요
+        
+        // 딱히 의미는 없는데 구분하러 변수 3개 생성
+        //let ke=document.getElementById("keyInput");
+        let kd=document.getElementById("keyInput");
+        let ku=document.getElementById("keyInput");
+        let kp=document.getElementById("keyInput");
+        let r=document.getElementById("result");
+
+        /* ke.addEventListener("keydown",function(){
+            r.textContent="키 다운:"+event.key;
+        }); */
+        kd.addEventListener("keydown",function(){
+            r.textContent="키 다운:"+event.key;
+        });
+        ku.addEventListener("keyup",function(){
+            r.textContent="키 업:"+event.key;
+        });
+        kp.addEventListener("keypress",function(){
+            r.textContent="키 누르기:"+event.key;
+        });
         
         // 여기에 코드를 작성하세요
         
