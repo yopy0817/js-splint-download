@@ -30,7 +30,19 @@
         // 3. "<strong>굵은 텍스트</strong>"를 각각에 적용해보세요
         
         // 여기에 코드를 작성하세요
-        
+        let html = document.getElementById("innerHTMLBtn");
+        let text = document.getElementById("textContentBtn");
+
+        let result1 = document.getElementById("result1");
+        let result2 = document.getElementById("result2");
+
+        html.addEventListener("click", function(){
+            result1.innerHTML = "<strong>굵은 텍스트<strong>"
+        });
+
+        text.addEventListener("click", function(){
+            result2.textContent = "<strong>굵은 텍스트<strong>"
+        });
     </script>
 </body>
 </html>
