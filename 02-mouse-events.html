@@ -21,13 +21,24 @@
     </div>
 
     <script>
-        // 힌트: 
-        // 1. mouseenter - 마우스가 요소 위로 올라갈 때
-        // 2. mouseleave - 마우스가 요소를 벗어날 때
-        // 3. click - 마우스 클릭할 때
-        // 4. textContent로 결과를 표시하세요
+        // 요소 선택
+        const mouseBox = document.getElementById('mouseBox');
+        const result = document.getElementById('result');
         
-        // 여기에 코드를 작성하세요
+        // 1. mouseenter - 마우스가 요소 위로 올라갈 때
+        mouseBox.addEventListener('mouseenter', function() {
+            result.textContent = '마우스가 박스 위로 올라왔습니다!';
+        });
+        
+        // 2. mouseleave - 마우스가 요소를 벗어날 때
+        mouseBox.addEventListener('mouseleave', function() {
+            result.textContent = '마우스가 박스를 벗어났습니다!';
+        });
+        
+        // 3. click - 마우스 클릭할 때
+        mouseBox.addEventListener('click', function() {
+            result.textContent = '박스를 클릭했습니다!';
+        });
         
     </script>
 </body>
