@@ -26,9 +26,20 @@
         // 2. mouseleave - 마우스가 요소를 벗어날 때
         // 3. click - 마우스 클릭할 때
         // 4. textContent로 결과를 표시하세요
+
         
         // 여기에 코드를 작성하세요
-        
+        let btn = document.getElementById("mouseBox");
+        let result = document.getElementById("result");
+        btn.addEventListener("mouseenter", function() {
+            result.textContent = "마우스가 박스 위로 올라왔습니다!";
+        });
+        btn.addEventListener("mouseleave", function() {
+            result.textContent = "마우스가 박스를 벗어났습니다!";
+        });
+        btn.addEventListener("click", function() {
+            result.textContent = "박스를 클릭했습니다!";
+        });
     </script>
 </body>
 </html>
