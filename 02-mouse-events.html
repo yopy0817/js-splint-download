@@ -28,6 +28,21 @@
         // 4. textContent로 결과를 표시하세요
         
         // 여기에 코드를 작성하세요
+
+        let mouseBox = document.getElementById("mouseBox");
+        let result = document.getElementById("result");
+
+        mouseBox.addEventListener("mouseenter", function() {
+            result.textContent = "마우스가 요소 위로 올라갈 때";
+        });
+
+        mouseBox.addEventListener("mouseleave", function() {
+            result.textContent = " 마우스가 요소를 벗어날 때";
+        });
+
+        mouseBox.addEventListener("click", function() {
+            result.textContent = " 마우스 클릭할 때";
+        });
         
     </script>
 </body>
