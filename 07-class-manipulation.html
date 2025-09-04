@@ -37,6 +37,27 @@
         // toggleBtn: 'large' 클래스를 토글 (있으면 제거, 없으면 추가)
         // replaceBtn: 'box' 클래스를 'success' 클래스로 교체
         // 힌트: classList.add(), classList.remove(), classList.toggle(), classList.replace() 사용
+        let addBtn = document.getElementById('addBtn');
+        let removeBtn = document.getElementById('removeBtn');
+        let toggleBtn = document.getElementById('toggleBtn');
+        let replaceBtn = document.getElementById('replaceBtn');
+        let targetBox = document.querySelector('.box');
+
+        addBtn.addEventListener("click", () => {
+            targetBox.classList.add("highlight");
+        });
+        
+        removeBtn.addEventListener("click", () => {
+            targetBox.classList.remove("highlight");
+        });
+        
+        toggleBtn.addEventListener("click", () => {
+            targetBox.classList.toggle("large");
+        });
+        
+        replaceBtn.addEventListener("click", () => {
+            targetBox.classList.replace("box", "success");
+        });
         
     </script>
 </body>
