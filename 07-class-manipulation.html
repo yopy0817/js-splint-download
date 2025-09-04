@@ -38,6 +38,31 @@
         // replaceBtn: 'box' 클래스를 'success' 클래스로 교체
         // 힌트: classList.add(), classList.remove(), classList.toggle(), classList.replace() 사용
         
+
+        let addBtn = document.getElementById("addBtn");
+        let removeBtn = document.getElementById("removeBtn");
+        let toggleBtn = document.getElementById("toggleBtn");
+        let replaceBtn = document.getElementById("replaceBtn");
+
+        let target = document.getElementById("target");
+
+
+        addBtn.addEventListener("click", function() {
+            target.classList.add("highlight");
+        });
+
+        removeBtn.addEventListener("click", function() {
+            target.classList.remove("highlight");
+        });
+
+        toggleBtn.addEventListener("click", function() {
+            target.classList.toggle("large");
+        });
+
+        replaceBtn.addEventListener("click", function() {
+            target.classList.replace("box", "success");
+        });
+        
     </script>
 </body>
 </html>
