@@ -28,6 +28,19 @@
         // 4. event.key로 눌린 키를 확인하세요
         
         // 여기에 코드를 작성하세요
+        let text = document.getElementById("keyInput");
+        let result = document.getElementById("result");
+        //text.addEventListener("keydown", function() {
+        //    result.textContent = ("keydown - 키를 누를 때");
+        //});
+        text.addEventListener("keyup", function() {
+            result.textContent = ("keyup - 키를 놓을 때");
+
+        });
+        text.addEventListener("keypress", function() {
+            result.textContent = (event.key);
+
+        });
         
     </script>
 </body>
