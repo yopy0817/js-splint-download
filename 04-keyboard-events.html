@@ -28,7 +28,19 @@
         // 4. event.key로 눌린 키를 확인하세요
         
         // 여기에 코드를 작성하세요
+
+        let keyInput = document.getElementById("keyInput");
+        let result = document.getElementById("result");
         
+        keyInput.addEventListener("keydown", function() {
+            result.textContent = "키 다운", event.key;
+        })
+        keyInput.addEventListener("keyup", function() {
+            result.textContent = "키 업", event.key;
+        })
+        keyInput.addEventListener("keypress", function() {
+            result.textContent = "키 프레스", event.key;
+        })
     </script>
 </body>
 </html>
