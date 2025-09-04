@@ -29,6 +29,22 @@
         
         // 여기에 코드를 작성하세요
         
+        let key = document.getElementById("keyInput");
+        let result = document.getElementById("result");
+
+        key.addEventListener("keydown", function(event) {
+            result.textContent = `키 다운: ${event.key}`;
+        });
+
+        key.addEventListener("keyup", function(event) {
+            result.textContent = `키 업: ${event.key}`;
+        });
+
+        key.addEventListener("keypress", function(event) {
+            result.textContent = `키 프레스: ${event.key}`;
+        });
+
+
     </script>
 </body>
 </html>

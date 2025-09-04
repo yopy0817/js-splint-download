@@ -29,6 +29,20 @@
         // 새 요소는 'new-item' 클래스를 가지고, "새 항목 X" 텍스트를 포함해야 합니다 (X는 순번)
         // 힌트: createElement, appendChild, classList.add를 사용하세요
         
+        let add = document.getElementById("addBtn");
+        let item = document.getElementById("itemList");
+
+        let count = 1;
+
+        add.addEventListener("click", function() {
+
+            let x = document.createElement("div");
+            x.classList.add("new-item");
+            x.textContent = `새 항목: ${count + 1}`;
+            item.appendChild(x);
+            count++;
+
+        });
     </script>
 </body>
 </html>
