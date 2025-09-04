@@ -34,6 +34,23 @@
         // 3. element.className = 'box highlighted'로 클래스 변경
         
         // 여기에 코드를 작성하세요
+        let pictureBtn = document.getElementById("changeImgBtn");
+        let linkBtn = document.getElementById("changeLinkBtn");
+        let classBtn = document.getElementById("changeClassBtn");
+        let img = document.getElementById("myImage");
+        let link = document.getElementById("myLink");
+        let box = document.getElementById("myBox");
+
+        pictureBtn.onclick = function() {
+            img.src = "img/2.jpg";
+        }
+        linkBtn.onclick = function() {
+            link.href = "https://www.naver.com";
+            link.textContent = "네이버 링크"
+        }
+        classBtn.onclick = function() {
+            box.className = "box highlighted";
+        }
         
     </script>
 </body>
