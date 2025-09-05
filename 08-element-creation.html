@@ -32,12 +32,13 @@
 
         let addBtn = document.getElementById("addBtn");
         let itemList = document.getElementById("itemList");
+        let cnt = 1;
 
         addBtn.addEventListener("click", function() {
             let newItem = document.createElement("div");
-            newItem.appendChild(div)
-            //console.log(newItem);
-            
+            newItem.classList.add("new-item")
+            newItem.textContent = "새항목" + cnt++;
+            itemList.appendChild(newItem);
 
         });
 
