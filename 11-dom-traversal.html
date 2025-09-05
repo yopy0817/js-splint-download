@@ -50,11 +50,67 @@
     <div id="result">탐색 결과가 여기에 표시됩니다</div>
 
     <script>
+        /*
+        name : gyeongguk jang
+        date : 20250905
+        체감난이도:★★★☆☆ 
+        desc :
+        1. 어째서인지 자꾸 클래스리스트를 까먹는다. 
+        2. 버튼 딸깍 할때마다 css 처리하는게 의외로 어렵다.
+           add로 추가하는것까진 쉬운데, 다른 버튼으로 넘어갈때 
+           이전 버튼의 css 속성 off하는게 생각보다 어려웠음
+        3. 뭐 일단 되기만 하면되니까 무식하게 때려넣긴했는데..
+           일단 오늘은 칼퇴
+        */
         // TODO: 각 버튼 클릭 시 target 요소의 관계를 탐색하여 결과를 표시하세요
         // findParentBtn: target의 부모 요소를 찾아서 텍스트를 result에 표시
         // findNextBtn: target의 다음 형제 요소를 찾아서 텍스트를 result에 표시
         // findPrevBtn: target의 이전 형제 요소를 찾아서 텍스트를 result에 표시
         // 힌트: parentNode, nextElementSibling, previousElementSibling 사용
+
+        let fp=document.getElementById("findParentBtn");
+        let nb=document.getElementById("findNextBtn");
+        let pb=document.getElementById("findPrevBtn");
+        let tg=document.getElementById("target");
+        let pr=document.getElementById("parent");
+        let c1=document.getElementById("child1");
+        let c2=document.getElementById("child2");
+        //let pr=document.querySelector(".parent");
+        //let ch=document.querySelectorAll("child");
+        let bx=document.getElementById("result");
+        let fn=tg.parentNode;
+        let cb1=tg.nextElementSibling;
+        let cb2=tg.previousElementSibling;
+        
+        //부모
+        fp.addEventListener("click",function(){
+            fn.classList.remove("highlight");
+            cb1.classList.remove("highlight");
+            cb2.classList.remove("highlight");
+            fn.classList.add("highlight");
+            bx.textContent="부모 딸깍";
+            
+        });
+        //형
+        nb.addEventListener("click",function(){
+            fn.classList.remove("highlight");
+            cb1.classList.remove("highlight");
+            cb2.classList.remove("highlight");
+            //let cb1=tg.nextElementSibling;
+            cb1.classList.add("highlight");
+            bx.textContent="형 딸깍";
+            
+        });
+        //제       
+        pb.addEventListener("click",function(){
+            fn.classList.remove("highlight");
+            cb1.classList.remove("highlight");
+            cb2.classList.remove("highlight");
+            //let cb2=tg.previousElementSibling;
+            cb2.classList.add("highlight");
+            bx.textContent="제 딸깍";
+            
+        });       
         
     </script>
 </body>
