@@ -30,7 +30,7 @@
     
     <div id="list" class="list">
         <div class="item">기존 아이템 1</div>
-        <div class="item">기존 아이템 2</div>
+        <div class="item gg">기존 아이템 2</div>
     </div>
 
     <script>
@@ -39,6 +39,35 @@
         // prependBtn: 리스트 맨 앞에 "새 아이템 (앞)" 추가  
         // insertBtn: 첫 번째 아이템 뒤에 "새 아이템 (중간)" 추가. 
         // 힌트: appendChild(), insertBefore() 사용
+
+        let appendBtn = document.getElementById("appendBtn");
+        let prependBtn = document.getElementById("prependBtn");
+        let insertBtn = document.getElementById("insertBtn");
+        let list = document.getElementById("list");
+        let gg = document.querySelector(".gg")
+
+        appendBtn.addEventListener("click", function (){
+            let newItem = document.createElement("div");
+            newItem.classList.add("new-item");
+            newItem.textContent = "새 아이템(뒤)";
+            list.appendChild(newItem);
+        });
+
+        prependBtn.addEventListener("click", function (){
+            let newItem = document.createElement("div");
+            newItem.classList.add("new-item");
+            newItem.textContent = "새 아이템(앞)";
+            list.prepend(newItem);
+        });
+
+        insertBtn.addEventListener("click", function (){
+            let newItem = document.createElement("div");
+            newItem.classList.add("new-item");
+            newItem.textContent = "새 아이템(중간)";
+            
+            
+            list.insertBefore(newItem, gg); // (삽입, 기준)
+        });
         
     </script>
 </body>
