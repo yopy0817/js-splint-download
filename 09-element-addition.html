@@ -39,7 +39,37 @@
         // prependBtn: 리스트 맨 앞에 "새 아이템 (앞)" 추가  
         // insertBtn: 첫 번째 아이템 뒤에 "새 아이템 (중간)" 추가. 
         // 힌트: appendChild(), insertBefore() 사용
-        
+        let appendBtn = document.getElementById("appendBtn");
+        let prependBtn = document.getElementById("prependBtn");
+        let insertBtn = document.getElementById("insertBtn");
+        let list = document.getElementById("list");
+
+        appendBtn.onclick = function(){
+            let div = document.createElement("div");
+            div.classList.add("item", "new-item");
+            div.innerHTML = "새 아이템 (뒤)";
+            list.appendChild(div);
+        }
+
+        prependBtn.onclick = function(){
+            let div = document.createElement("div");
+            div.classList.add("item", "new-item");
+            div.innerHTML = "새 아이템 (앞)";
+            list.insertBefore(div, list.firstElementChild);
+        }
+
+        insertBtn.onclick = function(){
+            let div = document.createElement("div");
+            let second = list.children[1];
+            div.classList.add("item", "new-item");
+            div.innerHTML = "새 아이템 (중간)";
+            if(second){
+                list.appendChild(div);
+                list.insertBefore(div, second);
+            }else{
+                list.appendChild(div);
+            }
+        }
     </script>
 </body>
 </html>
