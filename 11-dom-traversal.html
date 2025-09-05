@@ -55,7 +55,32 @@
         // findNextBtn: target의 다음 형제 요소를 찾아서 텍스트를 result에 표시
         // findPrevBtn: target의 이전 형제 요소를 찾아서 텍스트를 result에 표시
         // 힌트: parentNode, nextElementSibling, previousElementSibling 사용
+        let findParentBtn = document.getElementById("findParentBtn");
+        let findNextBtn = document.getElementById("findNextBtn");
+        let findPrevBtn = document.getElementById("findPrevBtn");
+        let result = document.getElementById("result");
+        let target = document.getElementById("target");
         
+        findParentBtn.addEventListener("click", function() {
+            target.nextElementSibling.className = "child";
+            target.parentNode.classList += " highlight";
+            target.previousElementSibling.className = "child";
+            result.textContent = "부모 요소를 찾았습니다: \"부모 요소 첫 번째 자식 타겟 요소(이 기준으로 처리하면됩니다) 두 번째 자식\"";
+        });
+        findNextBtn.addEventListener("click", function() {
+            target.parentNode.className = "parent";
+            target.previousElementSibling.className = "child";
+            target.nextElementSibling.classList += " highlight";
+            result.textContent = "다음 형제를 찾았습니다: \"두 번째 자식\"";
+        });
+        findPrevBtn.addEventListener("click",function() {
+            target.parentNode.className = "parent";
+            target.nextElementSibling.className = "child";
+            target.previousElementSibling.classList += " highlight";
+            result.textContent = "이전 형제를 찾았습니다: \"첫 번째 자식\"";
+        });
+
+
     </script>
 </body>
 </html>
