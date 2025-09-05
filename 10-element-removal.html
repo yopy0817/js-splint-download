@@ -40,7 +40,25 @@
         // removeAllBtn: 모든 아이템 삭제
         // 아이템 클릭: 클릭한 아이템만 삭제
         // 힌트: removeChild(), remove() 사용
-        
+        let removeFirstBtn = document.getElementById("removeFirstBtn");
+        let removeLastBtn = document.getElementById("removeLastBtn");
+        let removeAllBtn = document.getElementById("removeAllBtn");
+        let removeList = document.getElementById("list");
+        let removeItem = document.querySelectorAll(".item");
+        removeFirstBtn.addEventListener("click", function() {
+            removeList.removeChild( removeList.firstElementChild);
+        });
+
+        removeLastBtn.addEventListener("click", function() {
+            removeList.removeChild(removeList.lastElementChild);
+        });
+
+        removeAllBtn.addEventListener("click", function(){
+            while(removeList.firstElementChild!=null){
+                removeList.removeChild(removeList.firstElementChild);
+            }
+        });
+
     </script>
 </body>
 </html>
