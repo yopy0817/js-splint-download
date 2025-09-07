@@ -56,6 +56,53 @@
         // findPrevBtn: target의 이전 형제 요소를 찾아서 텍스트를 result에 표시
         // 힌트: parentNode, nextElementSibling, previousElementSibling 사용
         
+        const target = document.getElementById("target");
+        const result = document.getElementById("result");
+
+        const Parent = document.getElementById("findParentBtn");
+        const Next = document.getElementById("findNextBtn");
+        const Prev = document.getElementById("findPrevBtn");
+
+        function clear() {
+            document.querySelectorAll(".highlight").forEach(el => {
+                el.classList.remove("highlight");
+            });
+        }
+
+        Parent.addEventListener("click", function () {
+            clear();
+            const parent = target.parentNode;
+            if (parent) {
+                parent.classList.add("highlight");
+                result.textContent = "부모 요소: " + parent.id;
+            } else {
+                result.textContent = "부모 요소가 없습니다.";
+            }
+        });
+
+        Next.addEventListener("click", function () {
+            clear();
+            const next = target.nextElementSibling;
+            if (next) {
+                next.classList.add("highlight");
+                result.textContent = "다음 형제 요소: " + next.id;
+            } else {
+                result.textContent = "다음 형제가 없습니다.";
+            }
+        });
+
+        Prev.addEventListener("click", function () {
+            clear();
+            const prev = target.previousElementSibling;
+            if (prev) {
+                prev.classList.add("highlight");
+                result.textContent = "이전 형제 요소: " + prev.id;
+            } else {
+                result.textContent = "이전 형제가 없습니다.";
+            }
+        });
+
+
     </script>
 </body>
 </html>

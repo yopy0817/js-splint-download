@@ -41,6 +41,32 @@
         // 아이템 클릭: 클릭한 아이템만 삭제
         // 힌트: removeChild(), remove() 사용
         
+        let first = document.getElementById("removeFirstBtn");
+        let last = document.getElementById("removeLastBtn");
+        let all = document.getElementById("removeAllBtn");
+
+        first.addEventListener("click", function() {
+            if (list.firstElementChild) {
+                list.removeChild(list.firstElementChild);
+            }
+        });
+
+        last.addEventListener("click", function() {
+            if (list.lastElementChild) {
+                list.removeChild(list.lastElementChild);
+            }
+        });
+
+        all.addEventListener("click",function() {
+            list.innerHTML = "";
+        })
+
+        list.addEventListener("click", function(a) {
+            if (a.target.classList.contains("item")) {
+                a.target.remove();
+            }
+        });
+
     </script>
 </body>
 </html>
