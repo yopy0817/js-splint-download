@@ -127,6 +127,22 @@
     </div>
 
     <script>
+
+        /*
+        name : gyeongguk jang
+        date : 20250908
+        체감난이도:★★★★☆ 
+        desc :
+        1. 슬슬 체감상 불지옥 난이도 시작된다
+        2. 오타내기 싫어서 따블크-릭 해서 변수 입력
+        3. 이벤트 진짜 봐도봐도 까먹어서 계속 보고 또보는중..
+           근데도 계속 까먹음 미치겠음;
+        */
+
+
+
+
+
         // TODO: 폼 유효성 검사 기능을 구현하세요
         
         // 1. 실시간 유효성 검사 (input 이벤트)
@@ -143,7 +159,97 @@
         // - 비밀번호: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
         // - classList.add('error'), classList.remove('error') 사용
         // - error-message 요소의 display 스타일 조작
-        
+
+        let form=document.getElementById("signupForm");
+        form.addEventListener("click",function(){
+            event.preventDefault();
+            let v1=/^[a-zA-Z0-9_]{3,20}$/;
+            let v2=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let v3=/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            //console.log(v1);
+            let form=document.getElementById("signupForm");
+            //let user=form.username.value;
+            form.username.addEventListener("click",function(a){
+                let user=document.getElementById("username-error");
+                if(v1.test(a.target.value)){
+                    a.target.classList.add("success");
+                    a.target.classList.remove("error");
+                    user.style.display="none";
+                }else{
+                    a.target.classList.add("error");
+                    a.target.classList.remove("success");
+                    user.style.display="block";
+                    user.innerHTML="사용자명은 3-20자 영문, 숫자, 언더스코어만 가능합니다.";
+                }
+            });
+            
+
+            form.email.addEventListener("click",function(a){
+                let mail=document.getElementById("email-error");
+                if(v2.test(a.target.value)){
+                    a.target.classList.add("success");
+                    a.target.classList.remove("error");
+                    mail.style.display="none";
+                }else{
+                    a.target.classList.add("error");
+                    a.target.classList.remove("success");
+                    mail.style.display="block";
+                    mail.innerHTML="유효하지않은 이메일 형식입니다.";
+                }
+            });
+
+            let p;
+            form.password.addEventListener("click",function(a){
+                let pw1=document.getElementById("password-error");
+                if(v3.test(a.target.value)){
+                    a.target.classList.add("success");
+                    a.target.classList.remove("error");
+                    pw1.style.display="none";
+                    
+                    //console.log(p);
+                }else{
+                    a.target.classList.add("error");
+                    a.target.classList.remove("success");
+                    pw1.style.display="block";
+                    pw1.innerHTML="비밀번호는 8자 이상, 영문+숫자+특수문자를 포함해야 합니다..";
+                }
+            });
+
+            
+            form.confirmPassword.addEventListener("click",function(a){
+                let pw2=document.getElementById("confirmPassword-error");
+                
+                let p1=document.getElementById("password");
+                let p2=document.getElementById("confirmPassword");
+
+                if(p1.value===p2.value){
+                    a.target.classList.add("success");
+                    a.target.classList.remove("error");
+                    pw2.style.display="none";
+                    return true;
+                }else{
+                    a.target.classList.add("error");
+                    a.target.classList.remove("success");
+                    pw2.style.display="block";
+                    pw2.innerHTML="비밀번호가 일치하지 않습니다.";
+                    return false;
+                } 
+            });     
+        })
+
+
+        /* function diff(){
+            let p1=document.getElementById("password");
+            let p2=document.getElementById("confirmPassword");
+            console.log(p1);
+            console.log(p2);
+            
+            if(p1.value===p2.value){
+                return true;
+            }else{
+                return false;
+            }
+        } */
     </script>
 </body>
 </html>
