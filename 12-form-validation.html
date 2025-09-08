@@ -144,6 +144,120 @@
         // - classList.add('error'), classList.remove('error') 사용
         // - error-message 요소의 display 스타일 조작
         
+        let username = document.getElementById("username");
+        let usernameError = document.getElementById("username-error");
+        const re_username = /^[A-Za-z0-9_]{3,20}$/;
+        username.onclick = function() {
+            event.preventDefault();
+            username.focus();
+        }
+        username.oninput = function() {
+            event.preventDefault();
+            if(re_username.test(username.value)){
+                username.classList.remove('error');
+                usernameError.style.display = "none";
+                username.classList.add('success');
+            }
+            else {
+                username.classList.add('error');
+                usernameError.style.display = "block";
+                usernameError.textContent = "사용자명은 3-20자 영문, 숫자, 언더스코어만 가능합니다.";
+            }
+        }
+
+        let email = document.getElementById("email");
+        let emailError = document.getElementById("email-error");
+        let emailSuccess = document.getElementById("email-success");
+        const re_email = /^[\w.-]+@[\w.-]+\.\w+$/;
+        email.onclick = function() {
+            event.preventDefault();
+            email.focus();
+        }
+        email.oninput = function() {
+            event.preventDefault();
+            if(re_email.test(email.value)){
+                email.classList.remove('error');
+                email.classList.add('success');
+                emailError.style.display = "none";
+                emailSuccess.style.display = "block";
+                emailSuccess.textContent = "유효한 이메일 형식입니다."
+            }
+            else {
+                email.classList.add('error');
+                emailError.style.display = "block";
+                emailError.textContent = "유효한 이메일 형식을 입력해주세요.";
+            }
+        }
+
+        let password = document.getElementById("password");
+        let passwordError = document.getElementById("password-error");
+        const re_password = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9])\S{8,}$/;
+        password.onclick = function() {
+            event.preventDefault();
+            password.focus();
+        }
+        password.oninput = function() {
+            event.preventDefault();
+            if(re_password.test(password.value)){
+                password.classList.remove('error');
+                password.classList.add('success');
+                passwordError.style.display = "none";
+            }
+            else {
+                password.classList.add('error');
+                passwordError.style.display = "block";
+                passwordError.textContent = "비밀번호는 8자 이상, 영문+숫자+특수문자를 포함해야 합니다.";
+            }
+        }
+
+        let confirmPassword = document.getElementById("confirmPassword");
+        let confirmPasswordError = document.getElementById("confirmPassword-error");
+        confirmPassword.onclick = function() {
+            event.preventDefault();
+            confirmPassword.focus();
+        }
+        confirmPassword.oninput = function() {
+            event.preventDefault();
+            if(password.value==confirmPassword.value){
+                confirmPassword.classList.add('success');
+                confirmPassword.classList.remove('error');
+                confirmPasswordError.style.display = "none";
+
+            }
+            else {
+                confirmPassword.classList.add('error');
+                confirmPasswordError.style.display = "block";
+                confirmPasswordError.textContent = "비밀번호가 일치하지 않습니다.";
+            }
+        }
+
+        let submitBtn = document.getElementById("submitBtn");
+        submitBtn.onclick = function() {
+            event.preventDefault();
+            if(re_username.test(username.value)==false){
+                console.log("사용자명 조건 불만족");
+                return null;
+            }
+            if(re_email.test(email.value)==false){
+                console.log("이메일 조건 불만족");
+                return null;
+            }
+            if(re_password.test(password.value)==false){
+                console.log("비밀번호 조건 불만족");
+                return null;
+            }
+            if(password.value!=confirmPassword.value){
+                console.log("비밀번호 확인 조건 불만족");
+                return null;
+            }
+            if(re_username.test(username.value) && 
+            re_email.test(email.value) && 
+            re_password.test(password.value) && 
+            (password.value==confirmPassword.value)){
+                alert("회원가입 성공!");
+            }
+        }
+
     </script>
 </body>
 </html>
