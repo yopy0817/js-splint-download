@@ -136,6 +136,20 @@
         //    - 이메일: 유효한 이메일 형식
         //    - 비밀번호: 8자 이상, 영문+숫자+특수문자 포함
         //    - 비밀번호 확인: 비밀번호와 일치
+        let form = document.getElementById('signupForm');
+        let username = document.getElementById('username');
+        let email = document.getElementById('email');
+        let password = document.getElementById('password');
+        let confirmPassword = document.getElementById('confirmPassword');
+        let submitBtn = document.getElementById('submitBtn');
+        let result = document.getElementById('result');
+        let errorMessages = document.querySelectorAll('.error-message');
+        let successMessages = document.querySelectorAll('.success-message');
+
+        let usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
         
         // 힌트: 
         // - 정규표현식 사용 (username: /^[a-zA-Z0-9_]{3,20}$/)
@@ -143,7 +157,67 @@
         // - 비밀번호: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
         // - classList.add('error'), classList.remove('error') 사용
         // - error-message 요소의 display 스타일 조작
-        
+
+        form.username.addEventListener("input", (e) => {
+            let usernameError = document.getElementById("username-error");
+            if(usernameRegex.test(e.target.value)) {
+                e.target.classList.add("success");
+                e.target.classList.remove("error");
+                usernameError.style.display = "none";
+            } else {
+                e.target.classList.add("error");
+                e.target.classList.remove("success");
+                usernameError.style.display = "block";
+                usernameError.innerHTML = '사용자명은 3-20자 영문, 숫자, 언더스코어만 가능합니다.';
+            }
+        });
+
+        form.email.addEventListener("input", (e) => {
+            let emailError = document.getElementById("email-error");
+            let emailSuccess = document.getElementById("email-success");
+            if(emailRegex.test(e.target.value)) {
+                e.target.classList.add('success');
+                e.target.classList.remove('error');
+                emailError.style.display = "none";
+                emailSuccess.style.display = "block";
+                emailSuccess.innerHTML = "유효한 이메일 형식입니다.";
+            } else {
+                e.target.classList.add("error");
+                e.target.classList.remove("success");
+                emailError.style.display = "block";
+                emailSuccess.style.display = "none";
+                emailError.innerHTML = '유효한 이메일 형식을 입력해주세요.'
+            }
+        });
+
+        form.password.addEventListener("input", (e) => {
+            let passwordError = document.getElementById('password-error');
+            if(passwordRegex.test(e.target.value)) {
+                e.target.classList.add('success');
+                e.target.classList.remove('error');
+                passwordError.style.display = "none";
+            } else {
+                e.target.classList.add('error');
+                e.target.classList.remove('success');
+                passwordError.innerHTML = "비밀번호는 8자 이상, 영문+숫자+특수문자를 포함해야 합니다.";
+                passwordError.style.display = "block";
+            }
+        });
+
+        form.confirmPassword.addEventListener("input", (e) => {
+            let confirmPasswordError = document.getElementById('confirmPassword-error');
+
+            if(form.password.value === form.confirmPassword.value) {
+                e.target.classList.add('success');
+                e.target.classList.remove('error');
+                confirmPasswordError.style.display = "none";
+            } else {
+                e.target.classList.add('error');
+                e.target.classList.remove('success');
+                confirmPasswordError.style.display = "block";
+                confirmPasswordError.innerHTML = "비밀번호가 일치하지 않습니다.";
+            }
+        });
     </script>
 </body>
 </html>
