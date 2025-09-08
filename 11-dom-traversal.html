@@ -56,6 +56,47 @@
         // findPrevBtn: target의 이전 형제 요소를 찾아서 텍스트를 result에 표시
         // 힌트: parentNode, nextElementSibling, previousElementSibling 사용
         
+        let findParentBtn = document.getElementById("findParentBtn");
+        let findNextBtn = document.getElementById("findNextBtn");
+        let findPrevBtn = document.getElementById("findPrevBtn");
+        let parent = document.querySelector(".parent");
+        let target = document.getElementById("target");
+
+        function clearHighlight() {
+            let clearHighlight = document.querySelectorAll(".parent, .child");
+            clearHighlight.forEach( function (item) {
+                item.classList.remove("highlight")
+            });
+        }
+
+        findParentBtn.addEventListener("click", function() {
+            clearHighlight();
+            parent.classList.add("highlight");
+            result.textContent = "부모요소를 찾았습니다: " + parent.textContent.trim()
+        });
+
+        findNextBtn.addEventListener("click", function() {
+            clearHighlight();
+            let nextSibling = target.nextElementSibling;
+            if(nextSibling) {
+                nextSibling.classList.add("highlight")
+                result.textContent = "다음 형제를 찾았습니다: " + nextSibling.textContent.trim();
+            } else {
+                result.textContent = "다음 형제가 없습니다.";
+            }
+        });
+
+        findPrevBtn.addEventListener("click", function() {
+            clearHighlight();
+            let prevSibling = target.previousElementSibling;
+            if(prevSibling) {
+                prevSibling.classList.add("highlight");
+                result.textContent = "이전 형제를 찾았습니다" + prevSibling.textContent.trim();
+            } else {
+                result.textContent = "이전 형제가 없습니다.";
+            }
+        });
+
     </script>
 </body>
 </html>

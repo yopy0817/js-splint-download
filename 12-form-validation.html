@@ -144,6 +144,103 @@
         // - 인풋스타일 classList.add('error'), classList.remove('error') 사용
         // - 인풋스타일 classList.add('success'), classList.remove('success') 사용
         // - error-message 요소의 display 스타일 조작
+
+
+        let form = document.getElementById("signupForm");
+        let username = document.getElementById("username");
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+        let confirmPassword = document.getElementById("confirmPassword");
+        let submitBtn = document.getElementById("submitBtn");
+        let result = document.getElementById("result");
+
+        
+        //name
+        username.addEventListener("input", function() {
+
+            let regex1 = /^[a-zA-Z0-9_]{3,20}$/;
+            let usernameError = document.getElementById("username-error");
+
+            if( !regex1.test(username.value)) {
+                username.classList.add('error');
+                username.classList.remove('success');
+                usernameError.style.display = "block";
+                usernameError.textContent = "사용자명은 3-20자 영문, 숫자, 언더스코어만 가능합니다.";
+            } else {
+                username.classList.add('success');
+                username.classList.remove('error');
+                usernameError.style.display = "none";
+            }
+        });
+
+        //email
+        email.addEventListener("input", function() {
+            
+            let regex2 = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let emailError = document.getElementById("email-error");
+            let emailSuccess = document.getElementById("email-success");
+
+            if( !regex2.test(email.value)) {
+                email.classList.add('error');
+                email.classList.remove('success');
+                emailError.textContent = "유효한 이메일 형식을 입력해주세요";
+                emailError.style.display = "block";
+                emailSuccess.style.display = "none";
+            } else {
+                email.classList.add('success');
+                email.classList.remove('error');
+                emailSuccess.textContent = "유효한 이메일 형식입니다.";
+                emailSuccess.style.display = "block";
+                emailError.style.display = "none";
+            }
+        }); 
+
+        //password
+        password.addEventListener("input", function() {
+        
+            let regex3 = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            let pwError = document.getElementById("password-error");
+            if( !regex3.test(password.value)) {
+                password.classList.add('error');
+                password.classList.remove('success');
+                pwError.textContent = "비밀번호는 8자 이상, 영문+숫자+특수문자를 포함해야 합니다.";
+                pwError.style.display = "block";
+            } else {
+                password.classList.add('success');
+                password.classList.remove('error');
+                pwError.style.display = "none";
+            }
+        });
+
+        confirmPassword.addEventListener("input", function() {
+            let confirmPwError = document.getElementById("confirmPassword-error")
+
+            if (confirmPassword.value !== password.value || confirmPassword.value === "") {
+                confirmPassword.classList.add('error');
+                confirmPassword.classList.remove('success');
+                confirmPwError.textContent = "비밀번호가 일치하지 않습니다."
+                confirmPwError.style.display = "block"
+            } else {
+                confirmPassword.classList.add('success');
+                confirmPassword.classList.remove('error');
+                confirmPwError.style.display = "none"
+            }
+        });
+            
+        form.addEventListener("submit", function() {
+            
+            event.preventDefault();
+            let regex1 = /^[a-zA-Z0-9_]{3,20}$/; //name
+            let regex2 = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //email
+            let regex3 = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; //pw
+
+            if (regex1.test(username.value) && regex2.test(email.value) && regex3.test(password.value) && password.value === confirmPassword.value) {
+                alert("회원가입 성공!")
+            }
+        });
+
+    
         
     </script>
 </body>
