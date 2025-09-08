@@ -28,7 +28,17 @@
         // TODO: 버튼 클릭 시 itemList에 새로운 div 요소를 추가하세요
         // 새 요소는 'new-item' 클래스를 가지고, "새 항목 X" 텍스트를 포함해야 합니다 (X는 순번)
         // 힌트: createElement, appendChild, classList.add를 사용하세요
-        
+        let i = 1;
+        let addBtn = document.getElementById("addBtn");
+        let itemList = document.getElementById("itemList");
+
+        addBtn.onclick = function(){
+            let newItem = document.createElement("div");
+            newItem.textContent = "새 항목 " + i;
+            newItem.classList.add("new-item");
+            itemList.appendChild(newItem);
+            i++;
+        }
     </script>
 </body>
 </html>
