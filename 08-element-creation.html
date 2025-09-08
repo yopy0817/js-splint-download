@@ -25,9 +25,28 @@
     </div>
 
     <script>
+         /* 
+        desc : gyeongguk jang
+        date : 20250904
+        체감난이도:★★☆☆☆ 
+        저 이벤트함수들 쓸줄모르면 절대 안돌아감.
+        */
         // TODO: 버튼 클릭 시 itemList에 새로운 div 요소를 추가하세요
         // 새 요소는 'new-item' 클래스를 가지고, "새 항목 X" 텍스트를 포함해야 합니다 (X는 순번)
         // 힌트: createElement, appendChild, classList.add를 사용하세요
+        
+        let ad=document.getElementById("addBtn");
+        let ls=document.getElementById("itemList");
+        let i=1;
+        
+        ad.addEventListener("click",function(){
+            let d=document.createElement("div");
+            ls.appendChild(d);            
+            d.classList.add("new-item");
+            d.textContent="새항목 "+i;
+            i++;
+        });
+        
         
     </script>
 </body>

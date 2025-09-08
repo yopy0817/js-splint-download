@@ -31,14 +31,86 @@
     <div id="list" class="list">
         <div class="item">기존 아이템 1</div>
         <div class="item">기존 아이템 2</div>
+        <div class="item">기존 아이템 2</div>
+        <div class="item">기존 아이템 2</div>
+        <div class="item">기존 아이템 2</div>
+        <div class="item">기존 아이템 2</div>
+        <div class="item">기존 아이템 2</div>
+
     </div>
 
     <script>
+        /* 
+        desc : gyeongguk jang
+        date : 20250904
+        체감난이도:★★★★☆ 
+        
+        1. 오타때문에 미칠거같다. 
+        오타 하나때문에 안돌아간다
+        2. insertBefore()에서 firstChild 인자 모르면 못돌림;;
+        하도안되서 어떻게든 찾아냄.
+        3. 요소 추가가 생각보다 어려움;
+        일단 배열처리해서 중간에 꼽사리끼게했는데, 
+        첫번째 아이템 뒤? 중간이면 센터 아닌가요?;
+        4. 이상하게 빡쎘음. 끗
+        */
+
+
         // TODO: 각 버튼 클릭 시 새로운 요소를 다른 위치에 추가하세요
         // appendBtn: 리스트 맨 뒤에 "새 아이템 (뒤)" 추가
         // prependBtn: 리스트 맨 앞에 "새 아이템 (앞)" 추가  
         // insertBtn: 첫 번째 아이템 뒤에 "새 아이템 (중간)" 추가. 
         // 힌트: appendChild(), insertBefore() 사용
+
+        
+        let r=document.getElementById("appendBtn");
+        let p=document.getElementById("prependBtn");
+        let c=document.getElementById("insertBtn");
+        let box=document.getElementById("list"); 
+        let it=document.querySelectorAll("div[class=item]"); //중간에 넣을 배열
+
+        let i1=1;
+        let i2=1;
+        let i3=1;
+        let l;
+        //뒤
+        r.addEventListener("click",function(){
+            let rb=document.createElement("div");
+            box.appendChild(rb);
+            rb.classList.add("item");
+            rb.classList.add("new-item");
+            rb.textContent="새 아이템(rear) "+i1;
+            i1++;
+        });
+        //앞
+        p.addEventListener("click",function(){
+            let rp=document.createElement("div");
+            rp.classList.add("item");
+            rp.classList.add("new-item");
+            //firstChild 이게 키값인가.. 하
+            box.insertBefore(rp,box.firstChild); 
+            rp.textContent="새 아이템(pront) "+i2;
+            i2++;
+        });
+        //중간
+        c.addEventListener("click",function(){
+            if(it.length%2===0){
+                l=parseInt(it.length/2);
+            }else{
+                l=parseInt((it.length-1)/2);
+                console.log(l);
+            }
+            console.log(l);
+
+            let c=document.createElement("div");
+            c.classList.add("item");
+            c.classList.add("new-item");
+            box.insertBefore(c,it[l]); 
+            c.textContent="새 아이템(center) "+i3;
+            i3++;
+        });
+ 
+        
         
     </script>
 </body>

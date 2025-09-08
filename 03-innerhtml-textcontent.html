@@ -24,12 +24,31 @@
     </div>
 
     <script>
+        /* 
+        desc : jkk
+        date : 20250903
+        체감난이도:☆☆☆☆☆ 힌트에 있는거 그대로 치면됨
+        */
         // 힌트: 
         // 1. innerHTML은 HTML 태그를 해석합니다
         // 2. textContent는 텍스트만 처리합니다
         // 3. "<strong>굵은 텍스트</strong>"를 각각에 적용해보세요
+
+        let in1=document.getElementById("innerHTMLBtn");
+        let in2=document.getElementById("textContentBtn");
+        let r1=document.getElementById("result1");
+        let r2=document.getElementById("result2");
+
+        in1.addEventListener("click",function(){
+            r1.innerHTML="<strong>굵은텍스트</strong>";
+        });
+        in2.addEventListener("click",function(){
+            r2.textContent="<strong>굵은텍스트</strong>";
+        });
         
         // 여기에 코드를 작성하세요
+
+        
         
     </script>
 </body>

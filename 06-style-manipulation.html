@@ -28,12 +28,45 @@
     <div id="target" class="target">스타일을 변경할 박스</div>
 
     <script>
+
+        /* 
+        desc : jkk
+        date : 20250904
+        체감난이도:☆☆☆☆☆ 
+        점선이니까 dotted.. 겠지...?
+        */
+        
         // TODO: 각 버튼 클릭 시 target 요소의 스타일을 변경하세요
         // colorBtn: 배경색을 빨간색으로 변경
         // sizeBtn: 폰트 크기를 24px로 변경
         // borderBtn: 테두리를 파란색 점선으로 변경
         // resetBtn: 모든 인라인 스타일을 제거하여 초기 상태로 복원
         // 힌트: element.style.속성명 = '값' 형식을 사용하세요
+
+        let c=document.getElementById("colorBtn");
+        let s=document.getElementById("sizeBtn");
+        let b=document.getElementById("borderBtn");
+        let r=document.getElementById("resetBtn");
+        let t=document.getElementById("target");
+        //let t=document.getElementsByClassName("target");
+
+        c.addEventListener("click",function(){
+            t.style.backgroundColor="red";
+        });
+
+        s.addEventListener("click",function(){
+            t.style.fontSize="24px";
+        });
+
+        b.addEventListener("click",function(){
+            t.style.border="dotted blue";
+        });
+
+        r.addEventListener("click",function(){
+            t.style="";
+        });
+
+        
         
     </script>
 </body>

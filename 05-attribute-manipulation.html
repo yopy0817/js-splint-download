@@ -28,10 +28,44 @@
     </div>
 
     <script>
+        /* 
+           난이도 : ★★☆☆☆ 
+           1. 링크 바꾸는데 naver.com에서 자꾸 에러남
+           이유 : ㅁ?ㄹ 왠지 https 이거 빼먹어서 그런거같은데
+           결과 : https://www. 이거 추가하니까 처리됨
+           2. CSS 스타일바꾸는게 생각보다 잘 안됨
+           이유 : box.highlight 이 뻘짓 하다가 계속안됨
+           결과 : .빼니까됨. 걍 시키는대로 하자.
+
+         */
         // 힌트: 
         // 1. element.src = '새로운URL'로 이미지 변경
         // 2. element.href = '새로운URL'로 링크 변경
         // 3. element.className = 'box highlighted'로 클래스 변경
+
+        let ic=document.getElementById("changeImgBtn");
+        let lc=document.getElementById("changeLinkBtn");
+        let cc=document.getElementById("changeClassBtn");
+
+        let c1=document.getElementById("myImage");
+        let c2=document.getElementById("myLink");
+        let c3=document.querySelector(".box");
+
+        
+
+        ic.onclick=function(){
+            c1.src="./img/2.jpg";
+        }
+        lc.onclick=function(){
+            c2.href="https://www.naver.com";
+            c2.textContent="네이버 링크"; 
+        }
+        cc.onclick=function(){
+            c3.className="box highlighted";
+        }
+        
+
+        
         
         // 여기에 코드를 작성하세요
         

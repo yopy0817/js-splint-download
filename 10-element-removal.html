@@ -34,12 +34,53 @@
     </div>
 
     <script>
+        /* 
+        name : gyeongguk jang
+        date : 20250905
+        체감난이도:★☆☆☆☆ 
+        desc :
+        1. 여전히 오타때문에 미칠거같음
+        2. 9번 문제에서 불철주야 조뻉이친거 + 금일 강의 간 keyword 등
+        여러 정보들을 조합해서 할만했음
+        3. "속성"을 써먹으니 체감난이도가 별 4개짜리 불지옥에서 1~2개급으로 급하락함.
+        4. append 어쩌구 이거 진짜 숙지안됨. 그런지 계속 까먹음.
+        */
+
         // TODO: 각 버튼과 아이템 클릭 시 요소를 삭제하세요
         // removeFirstBtn: 첫 번째 아이템 삭제
         // removeLastBtn: 마지막 아이템 삭제
         // removeAllBtn: 모든 아이템 삭제
         // 아이템 클릭: 클릭한 아이템만 삭제
         // 힌트: removeChild(), remove() 사용
+
+        let fb=document.getElementById("removeFirstBtn");
+        let lb=document.getElementById("removeLastBtn");
+        let ab=document.getElementById("removeAllBtn");
+        let ls=document.querySelector(".list");
+        let la=document.querySelectorAll(".item");
+        
+        //delete front
+        fb.addEventListener("click",function(){
+            ls.children[0].remove();
+            /* console.log(ls.firstElementChild);
+            ls.firstElementChild.remove();  */
+        });
+        //delete rear
+        l=la.length-1;
+        lb.addEventListener("click",function(){            
+            ls.children[l].remove();
+            console.log(l);
+            l--;
+            /* console.log(ls.lastElementChild);
+            ls.lastElementChild.remove(); */
+        });
+        //delete all
+        ab.addEventListener("click",function(){
+            for(let i=0;i<la.length;i++){
+                la[i].remove();
+            }
+        });
+        
         
     </script>
 </body>
