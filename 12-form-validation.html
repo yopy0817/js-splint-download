@@ -143,7 +143,25 @@
         // - 비밀번호: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
         // - classList.add('error'), classList.remove('error') 사용
         // - error-message 요소의 display 스타일 조작
+
+        //버튼 가져오기
+        let submitBtn=document.getElementById("submitBtn");
+
+        //서브밋 버튼 누르면 한꺼번에 검사
+        submitBtn.onclick=function(){
+            event.preventDefault();   //이건 왜...?
         
+        
+        let regex1=/^[a-zA-Z0-9_]{3,20}$/;  //사용자명
+        let regex2=/^[^\s@]+@[^\s@]+\.[^\s@]+$/; //이메일
+        let regex3=/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; //비밀번호
+
+        let username=container.signupForm.form-group.username;
+        if(!regex1.text(username)){
+            username.classList.add('error');
+        }
+    }
+ 
     </script>
 </body>
 </html>
