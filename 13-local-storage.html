@@ -161,7 +161,7 @@
         // 3. 메모 삭제 기능 (개별 삭제)
         // 4. 모든 메모 삭제 기능
         // 5. 메모 내보내기 기능 (JSON 형태로 다운로드)
-        // 6. 로컬 스토리지 상태 표시
+        // 6. 로컬 스토리지 상태 표시 (완료)
         
 
         
@@ -173,6 +173,66 @@
         // - JSON.stringify() / JSON.parse()
         // - Date 객체로 생성 시간 기록
         // - createElement, appendChild로 동적 요소 생성
+
+
+        // 사용 변수
+        
+        let now = new Date();
+        let title = document.getElementById("noteTitle"); //제목변수
+        let notetext = document.getElementById("noteText"); //내용변수
+        let submitBtn = document.querySelector('#noteForm button[type="submit"]'); //메모저장 버튼 변수
+        let clearAllBtn = document.getElementById("clearAllBtn"); //모든 메모 삭제 버튼 변수
+        let exportBtn = document.getElementById("exportBtn"); //메모 내보내기 버튼 변수
+        //let i=0; //반복문 변수
+        // 1. 메모 저장 기능 (50%완료, 메모 목록 표시 기능 필요)
+        submitBtn.addEventListener("click", function(){
+            //e.preventDefault();
+            let notes = JSON.parse(localStorage.getItem("notes")) || [];
+            notes.push({
+                title:title.value,
+                text:notetext.value,
+                data:now.toLocaleString()
+            });
+            localStorage.setItem('notes',JSON.stringify(notes));
+        })
+
+        // 2. 메모 목록 표시 기능 (페이지 로드 시)
+        display = function(){
+            let div = document.createElement("div");
+
+        }
+
+
+        // 4. 모든 메모 삭제 기능(삭제는 완료, 메모 목록최신화 필요)
+        clearAllBtn.addEventListener("click",function(){
+            if(confirm("모든 메모를 삭제하시겠습니까?")){
+                localStorage.clear();
+            }
+        })
+
+        // 5. 메모 내보내기 기능 (JSON 형태로 다운로드)
+        exportBtn.addEventListener("click",function(){
+            if(localStorage.getItem('notes')!=null){
+                let text = JSON.parse(localStorage.getItem('notes'));
+                let jsonStr = JSON.stringify(notes, null, 2);
+                let blob = new Blob([jsonStr], { type: "application/json" });
+                let link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = "notes.json";
+                link.click();
+                URL.revokeObjectURL(link.href);
+            }
+            else {
+                alert("내보낼 메모가 없습니다.");
+            }
+        })
+
+        //6. 로컬 스토리지 상태 표시 (완료)
+        if(localStorage.length!=null){
+            let storageStatus = document.getElementById("storageStatus");
+            storageStatus.style.color = "rgb(40,167,69)";
+            storageStatus.textContent = "사용 가능";
+        }
         
     </script>
 </body>
