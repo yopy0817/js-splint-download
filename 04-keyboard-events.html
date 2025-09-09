@@ -32,7 +32,9 @@
         let result=document.getElementById("result");
         keyInput.addEventListener("keydown", function(){
             result.innerHTML="키 다운:"+event.key;
-            
+        })
+        keyInput.addEventListener("keyup", function(){
+            result.innerHTML="키 업:"+event.key;
         })
 
 
