@@ -136,7 +136,16 @@
         //    - 이메일: 유효한 이메일 형식
         //    - 비밀번호: 8자 이상, 영문+숫자+특수문자 포함
         //    - 비밀번호 확인: 비밀번호와 일치
-        
+        let username = document.getElementById('username');
+        let email = document.getElementById('email');
+        let password = document.getElementById('password');
+        let confirmPassword = document.getElementById('confirmPassword');
+        let submitBtn = document.getElementById('submitBtn');
+
+        let usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
         // 힌트: 
         // - 정규표현식 사용 (username: /^[a-zA-Z0-9_]{3,20}$/)
         // - 이메일: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -144,6 +153,105 @@
         // - 인풋스타일 classList.add('error'), classList.remove('error') 사용
         // - 인풋스타일 classList.add('success'), classList.remove('success') 사용
         // - error-message 요소의 display 스타일 조작
+
+        function showError(input, message) {
+            let formGroup = input.parentElement;
+            let errorDisplay = formGroup.querySelector('.error-message');
+            let successDisplay = formGroup.querySelector('.success-message');
+            input.classList.add("error");
+            input.classList.remove("success");
+            errorDisplay.innerHTML = message;
+            errorDisplay.style.display = "block";
+            isUserNameValidate = false;
+            if(successDisplay) successDisplay.style.display = "none";
+        }
+
+        function showSuccess(input) {
+            let formGroup = input.parentElement;
+            let errorDisplay = formGroup.querySelector('.error-message');
+            let successDisplay = formGroup.querySelector('.success-message');
+            input.classList.add("success");
+            input.classList.remove("error");
+            errorDisplay.style.display = "none";
+            isUserNameValidate = true;
+            if(successDisplay) {
+                successDisplay.style.display = "block";
+            }
+        }
+
+        let isValidation = {
+            username: false,
+            email: false,
+            password: false,
+            confirmPassword: false
+        };
+
+        function validateUserName() {
+            if(usernameRegex.test(username.value)) {
+                showSuccess(username)
+                isValidation.username = true;
+            } else {
+                showError(username,"사용자명은 3-20자 영문, 숫자, 언더스코어만 가능합니다.");
+                isValidation.username = false;
+            }
+        }
+
+        function validateEmail() {
+            let errorMessage = "유효한 이메일 형식을 입력해주세요.";
+            if(emailRegex.test(email.value)) {
+                showSuccess(email);
+                isValidation.email = true;
+            } else {
+                showError(email, errorMessage);
+                isValidation.email = false;
+            }
+        }
+
+        function validatePassword() {
+            let errorMessage = "비밀번호는 8자 이상, 영문+숫자+특수문자를 포함해야 합니다.";
+            if(passwordRegex.test(password.value)) {
+                showSuccess(password);
+                isValidation.password = true;
+            } else {
+                showError(password, errorMessage)
+                isValidation.password = false;
+            }
+        }
+
+        function validateConfirmPassword() {
+            let errorMessage = "비밀번호가 일치하지 않습니다.";
+            if(confirmPassword.value === '') {
+                confirmPassword.classList.remove('success','error');
+                let showError = confirmPassword.closest(".error-message");
+                if(showError) showError.style.display = "none";
+                isValidation.confirmPassword = false;
+                return;
+            }
+            if(password.value === confirmPassword.value && isValidation.password) { 
+                showSuccess(confirmPassword);
+                isValidation.confirmPassword = true;
+            } else {
+                showError(confirmPassword, errorMessage);
+                isValidation.confirmPassword = false;
+            }
+        }
+
+        username.addEventListener("input", validateUserName);
+        email.addEventListener("input", validateEmail);
+        password.addEventListener("input", () => {
+            validatePassword();
+            validateConfirmPassword();
+        });
+        confirmPassword.addEventListener("input", validateConfirmPassword);
+
+
+        submitBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            if(isValidation.username && isValidation.email && isValidation.password && isValidation.confirmPassword) {
+                alert("회원가입 성공!");
+            }
+        });
+        
         
     </script>
 </body>

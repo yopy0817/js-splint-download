@@ -34,7 +34,27 @@
         // borderBtn: 테두리를 파란색 점선으로 변경
         // resetBtn: 모든 인라인 스타일을 제거하여 초기 상태로 복원
         // 힌트: element.style.속성명 = '값' 형식을 사용하세요
+        let btnBackgroundColor = document.getElementById("colorBtn");
+        let btnSize = document.getElementById("sizeBtn");
+        let btnBorder = document.getElementById("borderBtn");
+        let btnReset = document.getElementById("resetBtn");
+        let targetBox = document.querySelector('.target');
         
+        btnBackgroundColor.addEventListener("click", () => {
+            targetBox.style.backgroundColor = "#ff0000";
+        });
+        
+        btnSize.addEventListener("click", () => {
+            targetBox.style.fontSize = "24px";
+        });
+
+        btnBorder.addEventListener("click", () => {
+            targetBox.style.border = "2px dashed #0000ff";
+        });
+
+        btnReset.onclick = function() {
+            targetBox.removeAttribute('style');
+        }
     </script>
 </body>
 </html>

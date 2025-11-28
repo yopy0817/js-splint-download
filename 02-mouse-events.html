@@ -28,6 +28,17 @@
         // 4. textContent로 결과를 표시하세요
         
         // 여기에 코드를 작성하세요
+        let mouseHover = document.getElementById("mouseBox");
+        let boxResult = document.getElementById("result");
+        mouseHover.addEventListener("mouseenter", () => {
+            boxResult.textContent = "마우스가 박스 위로 올라왔습니다.";
+        });
+        mouseHover.addEventListener("mouseleave", () => {
+            boxResult.textContent = "마우스가 박스를 벗어났습니다!";
+        });
+        mouseHover.addEventListener("click", () => {
+            boxResult.textContent = "박스를 클릭했습니다!";
+        });
         
     </script>
 </body>
